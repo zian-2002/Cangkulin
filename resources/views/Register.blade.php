@@ -35,13 +35,13 @@
         @csrf
 
         <label>Nama</label>
-        <input type="text" name="name" required>
+        <input type="text" name="nama_admin" required>
 
         <label>Email</label>
         <input type="email" name="email" required>
 
         <label>No Hp</label>
-        <input type="No Hp" name="No Hp" required>
+        <input type="No_Hp_admin" name="No_Hp_admin" required>
 
         <label>username</label>
         <input type="username" name="username" required>
