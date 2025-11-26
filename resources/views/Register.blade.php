@@ -4,110 +4,143 @@
     <meta charset="UTF-8">
     <title>Register - Cangkulin</title>
     <style>
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin:0; padding:0; }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: url('{{ asset("img/hero5.png") }}') center/cover no-repeat;
+            position: relative;
+            height: 100vh;
         }
 
+        /* Overlay gelap */
+        body::before {
+            content:"";
+            position: absolute;
+            top:0; left:0;
+            width:100%; height:100%;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(1px);
+        }
+
+        /* Navbar putih tipis */
         .navbar {
-            background: #2e7d32;
-            padding: 14px;
-            color: white;
-            text-align: center;
-            font-size: 20px;
+            position: relative;
+            background: white;
+            padding: 10px 20px;
+            border-bottom: 2px solid #e0e0e0;
+            color: #2e7d32;
+            text-align: left;
+            font-size: 22px;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 10;
         }
 
+        /* Wrapper */
         .auth-wrapper {
-            min-height: calc(100vh - 52px);
+            position: relative;
+            z-index: 2;
+            min-height: calc(100vh - 55px);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 25px;
         }
 
-        .container {
+        /* Card Register */
+        .register-card {
             width: 390px;
-            background: white;
-            padding: 24px 24px 22px;
-            border-radius: 12px;
-            border: 1px solid #c8e6c9;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+            background: rgba(255, 255, 255, 0.92);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+            text-align: center;
+            backdrop-filter: blur(4px);
         }
 
-        .container h2 {
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 4px;
+        .register-card img.logo {
+            width: 90px;
+            margin-bottom: 10px;
         }
 
-        .container p.subtitle {
-            text-align: center;
-            font-size: 12px;
-            color: #78909c;
-            margin-top: 0;
+        .register-card h2 {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2e7d32;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #546e7a;
             margin-bottom: 18px;
         }
 
         label {
-            font-size: 13px;
+            text-align: left;
             display: block;
-            margin-top: 10px;
-            color: #455a64;
+            color: #37474f;
+            font-size: 14px;
+            margin-top: 12px;
         }
 
         input {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-top: 5px;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid #b0bec5;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         input:focus {
             outline: none;
             border-color: #43a047;
-            box-shadow: 0 0 0 2px rgba(67,160,71,0.15);
+            box-shadow: 0 0 0 3px rgba(67,160,71,0.25);
         }
 
         button {
             width: 100%;
-            padding: 10px;
+            padding: 11px;
+            margin-top: 20px;
             background: #43a047;
-            color:white;
-            border:none;
-            border-radius:6px;
-            margin-top:18px;
-            font-size: 14px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
             font-weight: bold;
-            cursor:pointer;
+            cursor: pointer;
+            transition: 0.25s;
         }
 
-        button:hover { background: #2e7d32; }
+        button:hover {
+            background: #2e7d32;
+        }
 
         .bottom-text {
-            text-align:center;
-            margin-top:12px;
-            font-size:12px;
-            color:#607d8b;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #37474f;
         }
 
-        .bottom-text a { color:#ef6c00; text-decoration:none; font-weight:bold; }
-        .bottom-text a:hover { text-decoration:underline; }
+        .bottom-text a {
+            color: #ff9800;
+            font-weight: bold;
+            text-decoration: none;
+        }
     </style>
 </head>
+
 <body>
 
 <div class="navbar">CANGKULIN</div>
 
 <div class="auth-wrapper">
-    <div class="container">
+    <div class="register-card">
+
+        <!-- LOGO -->
+        <img src="{{ asset('img/logo.png') }}" class="logo" alt="Logo Cangkulin">
+
         <h2>Register</h2>
         <p class="subtitle">Buat akun admin untuk mengakses sistem Cangkulin.</p>
 
@@ -121,10 +154,10 @@
             <input type="email" name="email" required>
 
             <label>No HP</label>
-            <input type="no_hp_admin" name="no_hp_admin" required>
+            <input type="text" name="no_hp_admin" required>
 
             <label>Username</label>
-            <input type="username" name="username" required>
+            <input type="text" name="username" required>
 
             <label>Password</label>
             <input type="password" name="password" required>
