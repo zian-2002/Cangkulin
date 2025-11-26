@@ -115,16 +115,16 @@
             @csrf
 
             <label>Nama</label>
-            <input type="text" name="name" required>
+            <input type="text" name="nama_admin" required>
 
             <label>Email</label>
             <input type="email" name="email" required>
 
             <label>No HP</label>
-            <input type="text" name="no_hp" required>
+            <input type="no_hp_admin" name="no_hp_admin" required>
 
             <label>Username</label>
-            <input type="text" name="username" required>
+            <input type="username" name="username" required>
 
             <label>Password</label>
             <input type="password" name="password" required>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KelompokTaniController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\HomeController; // ← baru
+use App\Http\Controllers\HomeController;
 
 // HALAMAN UTAMA (PUBLIC) - tanpa middleware
 Route::get('/', [HomeController::class, 'index'])->name('home');
