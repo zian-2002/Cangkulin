@@ -29,14 +29,15 @@ class KelompokTaniController extends Controller
 
     public function store(Request $request)
     {
+        // 1. Insert alamat + ambil ID otomatis
         $id_alamat = DB::table('alamat')->insertGetId([
             'desa' => $request->desa,
             'kecamatan' => $request->kecamatan,
             'kabupaten' => $request->kabupaten,
         ]);
 
+        // 2. Insert kelompok tani (ID otomatis, tidak perlu input)
         DB::table('kelompok_tani')->insert([
-            'id_kelompoktani' => $request->id_kelompoktani,
             'nama_kelompoktani' => $request->nama_kelompoktani,
             'jumlah_kelompoktani' => $request->jumlah_kelompoktani,
             'no_hp_kelompoktani' => $request->no_hp_kelompoktani,
@@ -54,7 +55,13 @@ class KelompokTaniController extends Controller
         $kelompok = DB::table('kelompok_tani')
             ->join('alamat', 'kelompok_tani.id_alamat', '=', 'alamat.id_alamat')
             ->where('id_kelompoktani', $id)
-            ->select('kelompok_tani.*', 'alamat.desa', 'alamat.kecamatan', 'alamat.kabupaten', 'alamat.id_alamat')
+            ->select(
+                'kelompok_tani.*',
+                'alamat.desa',
+                'alamat.kecamatan',
+                'alamat.kabupaten',
+                'alamat.id_alamat'
+            )
             ->first();
 
         return view('kelompok_tani.edit', compact('kelompok'));
@@ -64,14 +71,14 @@ class KelompokTaniController extends Controller
     {
         $kelompok = DB::table('kelompok_tani')->where('id_kelompoktani', $id)->first();
 
-        // update alamat
+        // Update alamat
         DB::table('alamat')->where('id_alamat', $kelompok->id_alamat)->update([
             'desa' => $request->desa,
             'kecamatan' => $request->kecamatan,
             'kabupaten' => $request->kabupaten,
         ]);
 
-        // update kelompok tani
+        // Update kelompok tani
         DB::table('kelompok_tani')->where('id_kelompoktani', $id)->update([
             'nama_kelompoktani' => $request->nama_kelompoktani,
             'jumlah_kelompoktani' => $request->jumlah_kelompoktani,
@@ -86,10 +93,12 @@ class KelompokTaniController extends Controller
     public function delete($id)
     {
         $kelompok = DB::table('kelompok_tani')->where('id_kelompoktani', $id)->first();
+
         if ($kelompok) {
             DB::table('alamat')->where('id_alamat', $kelompok->id_alamat)->delete();
             DB::table('kelompok_tani')->where('id_kelompoktani', $id)->delete();
         }
+
         return redirect()->route('kelompok.index')->with('success', 'Data berhasil dihapus!');
     }
 }

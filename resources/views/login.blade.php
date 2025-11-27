@@ -24,19 +24,6 @@
         z-index: 1;
     }
 
-    /* NAVBAR FIX */
-    .navbar {
-    position: relative;
-    background: white;               /* warna navbar putih */
-    padding: 10px 20px;              /* tinggi lebih tipis */
-    border-bottom: 2px solid #e0e0e0; /* garis bawah tipis */
-    color: #2e7d32;                  /* teks hijau */
-    text-align: left;                /* teks ke pojok kiri */
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    z-index: 999;
-}
 
     /* Wrapper */
     .auth-wrapper {
@@ -140,8 +127,6 @@
 </head>
 
 <body>
-
-<div class="navbar">CANGKULIN</div>
 
 <div class="auth-wrapper">
     <div class="login-card">

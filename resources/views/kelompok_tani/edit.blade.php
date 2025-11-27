@@ -1,42 +1,55 @@
 @extends('layout')
 
 @section('content')
-<h2>Data Kelompok Tani</h2>
+<h2>Edit Kelompok Tani</h2>
 
-<a href="{{ route('kelompok.create') }}" style="background:#43a047;color:white;padding:7px 15px;border-radius:4px;text-decoration:none;">+ Tambah Kelompok</a>
+<form action="{{ route('kelompok.update', $kelompok->id_kelompoktani) }}" method="POST">
+    @csrf
 
-<table border="1" width="100%" cellpadding="8" style="margin-top:15px;">
-    <tr style="background:#c5e1a5;">
-        <th>No</th>
-        <th>ID</th>
-        <th>Nama</th>
-        <th>Jumlah</th>
-        <th>No HP</th>
-        <th>Desa</th>
-        <th>Kecamatan</th>
-        <th>Kabupaten</th>
-        <th>NIK</th>
-        <th>Deskripsi Jalan</th>
-        <th>Aksi</th>
-    </tr>
+    <div class="form-group">
+        <label>Nama Kelompok Tani</label>
+        <input type="text" name="nama_kelompoktani" class="form-control" value="{{ $kelompok->nama_kelompoktani }}">
+    </div>
 
-    @foreach($kelompok as $k)
-    <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $k->id_kelompoktani }}</td>
-        <td>{{ $k->nama_kelompoktani }}</td>
-        <td>{{ $k->jumlah_kelompoktani }}</td>
-        <td>{{ $k->no_hp_kelompoktani }}</td>
-        <td>{{ $k->desa }}</td>
-        <td>{{ $k->kecamatan }}</td>
-        <td>{{ $k->kabupaten }}</td>
-        <td>{{ $k->nik }}</td>
-        <td>{{ $k->deskripsi_jalan }}</td>
-        <td>
-            <a href="{{ route('kelompok.edit', $k->id_kelompoktani) }}" class="btn btn-orange">Edit</a>
-            <a href="{{ route('kelompok.delete', $k->id_kelompoktani) }}" class="btn btn-red" onclick="return confirm('Hapus data?')">Hapus</a>
-        </td>
-    </tr>
-    @endforeach
-</table>
+    <div class="form-group">
+        <label>Jumlah Anggota</label>
+        <input type="number" name="jumlah_kelompoktani" class="form-control" value="{{ $kelompok->jumlah_kelompoktani }}">
+    </div>
+
+    <div class="form-group">
+        <label>No HP</label>
+        <input type="text" name="no_hp_kelompoktani" class="form-control" value="{{ $kelompok->no_hp_kelompoktani }}">
+    </div>
+
+    <div class="form-group">
+        <label>NIK</label>
+        <input type="text" name="nik" class="form-control" value="{{ $kelompok->nik }}">
+    </div>
+
+    <div class="form-group">
+        <label>Deskripsi Jalan</label>
+        <textarea name="deskripsi_jalan" class="form-control">{{ $kelompok->deskripsi_jalan }}</textarea>
+    </div>
+
+    <hr>
+
+    <h3>Alamat</h3>
+
+    <div class="form-group">
+        <label>Desa</label>
+        <input type="text" name="desa" class="form-control" value="{{ $kelompok->desa }}">
+    </div>
+
+    <div class="form-group">
+        <label>Kecamatan</label>
+        <input type="text" name="kecamatan" class="form-control" value="{{ $kelompok->kecamatan }}">
+    </div>
+
+    <div class="form-group">
+        <label>Kabupaten</label>
+        <input type="text" name="kabupaten" class="form-control" value="{{ $kelompok->kabupaten }}">
+    </div>
+
+    <button type="submit" class="btn btn-green">Update</button>
+</form>
 @endsection

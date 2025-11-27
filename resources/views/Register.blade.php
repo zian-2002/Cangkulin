@@ -23,20 +23,6 @@
             backdrop-filter: blur(1px);
         }
 
-        /* Navbar putih tipis */
-        .navbar {
-            position: relative;
-            background: white;
-            padding: 10px 20px;
-            border-bottom: 2px solid #e0e0e0;
-            color: #2e7d32;
-            text-align: left;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            z-index: 10;
-        }
-
         /* Wrapper */
         .auth-wrapper {
             position: relative;
@@ -132,8 +118,6 @@
 </head>
 
 <body>
-
-<div class="navbar">CANGKULIN</div>
 
 <div class="auth-wrapper">
     <div class="register-card">
